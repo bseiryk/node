@@ -1,0 +1,7 @@
+{
+"Customer": {
+          "host": "localhost",
+          "PORT": 8888,
+          "dbName": "customers"
+    }
+}
