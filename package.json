@@ -6,7 +6,8 @@
   "dependencies": {
     "config": "^2.0.1",
     "debug": "^3.1.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongoose": "^5.2.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"
