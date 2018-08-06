@@ -1,15 +1,15 @@
 const express = require('express');
-const config = require("config")
-const mongoose = require('mongoose')
-const todos = require('./routes/todos')
-const mainDebuger = require('debug')('main')
+const config = require("config");
+const mongoose = require('mongoose');
+const Todos = require('./routes/Todos');
+const Users = require('./routes/Users');
 
 
 mongoose.connect(config.get('Customer.dbConnection'), {
     useNewUrlParser: true
 })
-.then(() => mainDebuger('db connected'))
-.catch( error => mainDebuger(error.message));
+.then(() => console.log('db connected'))
+.catch( error => console.log(error.message));
 
 mongoose.connection.once('open', () => console.log('connected to db'))
 
@@ -22,7 +22,8 @@ app.get('/', (req, res) => {
     res.send(config.get('password'))
 })
 
-app.use('/todos', todos)
+app.use('/todos', Todos);
+app.use('/users', Users);
 
 
 app.listen(config.get('Customer.PORT'), () => {
