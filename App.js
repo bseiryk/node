@@ -5,11 +5,13 @@ const todos = require('./routes/todos')
 const mainDebuger = require('debug')('main')
 
 
-mongoose.connect('mongodb://nevis1:nevis789456123@ds020228.mlab.com:20228/node_learn', {
+mongoose.connect(config.get('Customer.dbConnection'), {
     useNewUrlParser: true
-});
-mongoose.connection.once('open', () => console.log('connected to db'))
+})
+.then(() => mainDebuger('db connected'))
+.catch( error => mainDebuger(error.message));
 
+mongoose.connection.once('open', () => console.log('connected to db'))
 
 const app = express();
 
@@ -22,7 +24,6 @@ app.get('/', (req, res) => {
 
 app.use('/todos', todos)
 
-mainDebuger('main debuger')
 
 app.listen(config.get('Customer.PORT'), () => {
     console.log('WORK');
