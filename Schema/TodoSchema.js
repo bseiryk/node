@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const TodoSchema = new mongoose.Schema({
     name: { type: String, required: true },
     value: { type: String, required: true },
-    author: {
+    creator: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
+        ref: 'User',
         required: true
     },
     done: { type: Boolean, required: true },
