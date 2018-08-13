@@ -14,7 +14,6 @@ router.post('/', (req, res ) => {
     const user = new User(req.body);
     user.save()
     .then( (resp) => {
-        console.log(resp);
         res.send(resp)
     } )
     .catch( err => console.log('our errer', err.errors))

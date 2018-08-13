@@ -1,8 +1,11 @@
 const express = require('express');
 const config = require("config");
 const mongoose = require('mongoose');
-const Todos = require('./routes/Todos');
+
+const Moovies = require('./routes/Moovies');
 const Users = require('./routes/Users');
+const Genres = require('./routes/Genres');
+const Orders = require('./routes/Orders');
 
 
 mongoose.connect(config.get('Customer.dbConnection'), {
@@ -22,8 +25,10 @@ app.get('/', (req, res) => {
     res.send(config.get('password'))
 })
 
-app.use('/todos', Todos);
+app.use('/moovies', Moovies);
 app.use('/users', Users);
+app.use('/genres', Genres);
+app.use('/Orders', Orders);
 
 
 app.listen(config.get('Customer.PORT'), () => {
