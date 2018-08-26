@@ -6,7 +6,12 @@ const Moovies = require('./routes/Moovies');
 const Users = require('./routes/Users');
 const Genres = require('./routes/Genres');
 const Orders = require('./routes/Orders');
+const Auth = require('./routes/Auth');
 
+if( !config.get('jsonPrivatKey') ){
+    console.log('jsonPrivatKey variabel have not set');
+    process.exit(1);
+}
 
 mongoose.connect(config.get('Customer.dbConnection'), {
     useNewUrlParser: true
@@ -29,6 +34,7 @@ app.use('/moovies', Moovies);
 app.use('/users', Users);
 app.use('/genres', Genres);
 app.use('/Orders', Orders);
+app.use('/auth', Auth);
 
 
 app.listen(config.get('Customer.PORT'), () => {

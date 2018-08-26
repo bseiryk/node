@@ -1,3 +1,4 @@
 {
-    "password": "node_password"
+    "password": "node_password",
+    "jsonPrivatKey": "node_jsonPrivatKey"
 }
