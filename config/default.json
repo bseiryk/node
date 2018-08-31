@@ -1,8 +1,8 @@
 {
-    "jsonPrivatKey":"",
-    "Customer": {
-          "host": "localhost",
-          "PORT": 8888,
-          "dbConnection": "mongodb://nevis1:nevis789456123@ds020228.mlab.com:20228/node_learn"
-    }
+  "jsonPrivatKey": "myPrivatKey",
+  "Customer": {
+    "host": "localhost",
+    "PORT": 8888,
+    "dbConnection": "mongodb://nevis1:nevis789456123@ds020228.mlab.com:20228/node_learn"
+  }
 }
