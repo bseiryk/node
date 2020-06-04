@@ -1,0 +1,13 @@
+export const {
+  port = 4444,
+  NODE_ENV = 'development',
+  DB_USERNAME = 'admin',
+  DB_PASSWORD = 'asdfghj1',
+  DB_HOST = 'ds147052.mlab.com',
+  DB_PORT = '47052',
+  DB_NAME = 'transitionmanager',
+  GOOGLE_CLIENT_ID = '154907015483-4fa0me704fj0rm5aaea7tg1k0ubp1bof.apps.googleusercontent.com',
+  GOOGLE_CLIENT_SECRET = 'B6Dpcp77bT_PIzhwOh2lywD8',
+  SESSION_SECRET = 'sessecrericus',
+  REDIRECT_URL = 'http://localhost:3000',
+} = process.env;
