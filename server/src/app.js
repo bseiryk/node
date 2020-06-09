@@ -1,11 +1,18 @@
 
 import passport from 'passport';
+import express from 'express';
 import bodyParser from 'body-parser';
 
-
-import { authRouter } from './modules/routs';
+import {
+  authRouter,
+  productRouter,
+} from './modules/routs';
 import authConfigInit from './modules/auth/config-init';
 import { isAuth } from './modules/base/middlewares';
+import {
+  syncErrorHandler,
+  defaultRouter,
+} from './modules/base/controllers';
 
 export default (app) => {
   app.use(bodyParser.json());
@@ -17,9 +24,14 @@ export default (app) => {
 
 
   app.use('/auth', authRouter);
-  app.use('/session', isAuth, (req, res, next) => {
-    console.log('req.user', req.user);
+  // app.use('/product', productRouter);
+  app.use('/product', isAuth, productRouter);
 
-    res.json('req')
-  });
-};
+  // app.use('/client', (req, res, next) => {
+  //   res.json('as')
+  // });
+  app.use(express.static('build'));
+
+  app.use(defaultRouter);
+  app.use(syncErrorHandler);
+}

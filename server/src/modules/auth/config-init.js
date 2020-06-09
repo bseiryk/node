@@ -1,6 +1,5 @@
 import passport from 'passport';
 import { OAuth2Strategy } from 'passport-google-oauth';
-import jwt from 'jsonwebtoken';
 import pick from 'lodash/pick';
 
 import { googleAuthCallback } from './middlewares';

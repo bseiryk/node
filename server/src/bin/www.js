@@ -32,7 +32,7 @@ const MongoStore = connectMongo(expressSession);
     const app = express();
 
     app.use(cors({
-      origin: "http://localhost:3000",
+      origin: ["http://localhost:3000", "http://localhost:2222"],
       methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTION'],
       allowedHeaders: ['Content-Type'],
       credentials: true,
