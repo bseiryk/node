@@ -32,26 +32,26 @@ const MongoStore = connectMongo(expressSession);
     const app = express();
 
     app.use(cors({
-      origin: ["http://localhost:3000", "http://localhost:2222"],
+      origin: ["http://localhost:3000", "http://localhost:2222", "http://192.168.0.27:2222"],
       methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTION'],
       allowedHeaders: ['Content-Type'],
       credentials: true,
       optionsSuccessStatus: 200,
     }));
 
-    app.use(expressSession({
-      secret: SESSION_SECRET,
-      httpOnly: false,
-      saveUninitialized: false,
-      resave: false,
-      rolling: true,
-      cookie: {
-        maxAge: 1000 * 60 * 20,
-      },
-      store: new MongoStore({
-        mongooseConnection: mongoose.connection,
-      })
-    }));
+    // app.use(expressSession({
+    //   secret: SESSION_SECRET,
+    //   httpOnly: false,
+    //   saveUninitialized: false,
+    //   resave: false,
+    //   rolling: true,
+    //   cookie: {
+    //     maxAge: 1000 * 60 * 20,
+    //   },
+    //   store: new MongoStore({
+    //     mongooseConnection: mongoose.connection,
+    //   })
+    // }));
 
     configureApp(app);
 

@@ -1,0 +1,235 @@
+
+$-icon-color: #d3d3d3;
+$-icon-hover-color: #464646;
+$-items-background-hoover: #f5f5f5;
+
+// ================ header icons
+@mixin icon-pseudo-element {
+  display: block;
+  content: '';
+  transform: rotate(45deg);
+  height: 6px;
+  width: 6px;
+}
+
+@mixin icons {
+  cursor: pointer;
+  display: flex;
+  width: 22px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    &::before, &::after {
+      border-color: $-icon-hover-color;
+    }
+  }
+}
+
+
+.double-prev-icon {
+  @include icons;
+
+  &::after, &::before {
+    @include icon-pseudo-element;
+    border-bottom: 2px solid $-icon-color;
+    border-left: 2px solid $-icon-color;
+  }
+}
+
+
+.prev-icon {
+  @include icons;
+
+  &::before {
+    @include icon-pseudo-element;
+    border-bottom: 2px solid $-icon-color;
+    border-left: 2px solid $-icon-color;
+  }
+}
+
+
+
+.double-next-icon {
+  @include icons;
+
+  &::after, &::before {
+    @include icon-pseudo-element;
+    border-top: 2px solid $-icon-color;
+    border-right: 2px solid $-icon-color;
+  }
+}
+
+
+.next-icon {
+  @include icons;
+
+  &::before {
+    @include icon-pseudo-element;
+    border-top: 2px solid $-icon-color;
+    border-right: 2px solid $-icon-color;
+  }
+}
+// ================ header icons
+
+
+// ================ calendar
+.cell {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px;
+  box-sizing: border-box;
+  div {
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 1px;
+  }
+  div:hover {
+    background-color: $-items-background-hoover;
+    border-radius: 1px;
+  }
+}
+.cell_grey {
+  color: #bbbbbb;
+}
+.cell_selected div {
+  background-color: #1890ff !important;
+  border-radius: 1px;
+}
+.cell_current div {
+  border: 1px solid #1890ff;
+  border-radius: 1px;
+}
+// ================ calendar
+
+
+.datepicker {
+  position: relative;
+  height: 35px;
+  width: 200px;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  padding: 7px;
+
+  .input {
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    width: 100%;
+  }
+}
+
+
+.picker-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05);
+  top: 36px;
+  left: 0px;
+
+  & > div {
+    display: flex;
+  }
+
+  .header-container {
+    height: 35px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+
+    .header-content-itm {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+
+    }
+
+    .icon-wrapper {
+      flex-grow: 0;
+      display: flex;
+      width: 40px;
+    }
+  }
+
+  .main-container {
+    display: flex;
+    padding: 10px;
+  }
+
+
+  .calendar-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+  }
+
+  .timepicker-wrapper {
+    display: flex;
+    width: 150px;
+    margin-top: 35px;
+
+    .timepicker-wrapper_item {
+      text-align: center;
+      line-height: 28px;
+      &:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+      }
+    }
+
+    & > div {
+      overflow-y: auto;
+      flex-grow: 1;
+      border-top: 1px solid #f0f0f0;
+      border-left: 1px solid #f0f0f0;
+      height: 230px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+
+  .month-year-picker-wrapper {
+    background-color: white;
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap;
+
+    & > div {
+      height: 50px;
+      box-sizing: border-box;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      span {
+        display: inline-block;
+        padding: 5px;
+        text-align: center;
+        width: 100%;
+      }
+
+      &:hover span {
+        background-color: $-items-background-hoover;
+      }
+    }
+  }
+  
+
+  .footer-container {
+    border-top: 1px solid #f0f0f0;
+    .default-footer {
+      padding: 10px 0px;
+    }
+  }
+}
