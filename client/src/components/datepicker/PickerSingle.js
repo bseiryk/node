@@ -26,8 +26,8 @@ import './index.scss'
 // position of picker
 
 // tz 
-// ranges
 // inputs
+// ranges
 // features
 
 
