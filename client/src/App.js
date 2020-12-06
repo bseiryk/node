@@ -7,7 +7,7 @@ import Datepicker from './components/datepicker';
 function App() {
   return (
     <div className="App">
-      <Datepicker />
+      <Session type='MONTH' />
     </div>
   );
 }

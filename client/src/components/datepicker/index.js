@@ -9,6 +9,7 @@ import Picker from './Picker'
 import { buildCalenederData, getDecade } from './utils'
 import { SELECTION_STEPS, CALENDAR_HEADER_META, RANGE_TYPES } from './constants'
 import PickerSingle from './PickerSingle'
+import PickerRange from './PickerRange'
 import './index.scss'
 
 dayjs.extend(isoWeek)
@@ -16,7 +17,7 @@ dayjs.extend(customParseFormat)
 
 const Datepicker = (props) => {
   const {
-    type: initType,
+    type,
     format = 'DD/MM/YYYY',
     value,
   } = props;
@@ -64,6 +65,23 @@ const Datepicker = (props) => {
     setSinglePickerValue(value)
   }
 
+  const renderPicker = () => {
+    if (RANGE_TYPES.includes(type)) {
+      return (
+        <PickerRange
+          type={type}
+        />
+      )
+    }
+    return (
+      <PickerSingle
+        type={type}
+        onClose={() => setIsOpen(false)}
+        onChange={onChange}
+        value={singlePickerValue}
+      />
+    )
+  }
 
   return (
     <div className='datepicker'>
@@ -76,15 +94,7 @@ const Datepicker = (props) => {
         type="text"
         placeholder='Select date'
       />
-      {
-        isOpen && (
-          <PickerSingle
-            onClose={() => setIsOpen(false)}
-            onChange={onChange}
-            value={singlePickerValue}
-          />
-        )
-      }
+      {isOpen && renderPicker()}
     </div>
   )
 }
